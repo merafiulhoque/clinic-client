@@ -7,7 +7,7 @@ import {
   RefreshCcw, 
   LogOut 
 } from "lucide-react";
-import { APP_URLS } from "../constants/urls";
+import { APP_URLS } from "../../constants/urls";
 
 export const DOCTOR_MODULE_OPTIONS = [
   {

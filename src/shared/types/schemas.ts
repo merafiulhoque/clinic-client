@@ -18,6 +18,7 @@ export type UserSigninData = z.infer<typeof userSigninSchema>;
 export const clinicCreateSchema = z.object({
     name: z.string().min(2, "Clinic name is required"),
     location: z.string().min(2, "Clinic location is required"),
+    ownerName: z.string()
 });
 
 export type ClinicCreateData = z.infer<typeof clinicCreateSchema>;
@@ -72,3 +73,21 @@ export const createScheduleSchema = z.object({
 )
 
 export type createScheduleData = z.infer<typeof createScheduleSchema>
+
+export enum Role  {
+    OWNER="OWNER",
+    STAFF="STAFF",
+    RECEPTIONIST="RECEPTIONIST",
+    DOCTOR="DOCTOR",
+    MANAGER="MANAGER"
+}
+
+export const memberCreateSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+    name: z.string(),
+    role: z.enum(Role),
+    clinicId: z.number()
+})
+
+export type memberCreateData = z.infer<typeof memberCreateSchema>

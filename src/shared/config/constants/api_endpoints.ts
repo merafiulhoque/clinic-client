@@ -9,8 +9,9 @@ export const API_ENDPOINTS = {
         CREATE: "/api/v1/clinic/create",
         GET_INFO: "/api/v1/clinic/get-info",
     },
-    MEMBER: {
+    CLINIC_MEMBER: {
         CREATE: "/api/v1/member/create",
+        MEMBERS: (clinicId: number)=> `/api/v1/member/${clinicId}/members`
     },
     DOCTOR: {
         CREATE: "/api/v1/doctor/create",

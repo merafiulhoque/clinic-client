@@ -4,6 +4,8 @@ export const APP_URLS = {
     SIGN_UP: "/signup",
     SIGN_IN: "/signin",
 
+    //
+
     // Public Appointments
     PUBLIC_DIRECTORY: "/appointments",
     BOOK_APPOINTMENT: "/appointments/book", // Will append ?scheduleId=...&date=...
@@ -14,5 +16,5 @@ export const APP_URLS = {
 
     // Role-based Dashboards (Base paths to be expanded later)
     OWNER_DASHBOARD: "/owner",
-    STAFF_DASHBOARD: "/staff",
+    CLINIC_MEMBER_DASHBOARD: "/clinic-member",
 } as const;

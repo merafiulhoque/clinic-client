@@ -30,6 +30,8 @@ export async function api<T>(
             : {}),
     });
 
+    console.log(res.body)
+
     const contentType = res.headers.get("content-type");
 
     // Handle non-2xx backend error responses by throwing an Error

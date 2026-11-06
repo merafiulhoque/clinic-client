@@ -21,6 +21,10 @@ export default function SigningPage() {
         formState: { errors },
     } = useForm<UserSigninData>({
         resolver: zodResolver(userSigninSchema),
+        defaultValues: {
+            email: "bob@gmail.com",
+            password: "abcdef"
+        }
     });
 
     const signinMutation = useMutation({
@@ -37,7 +41,7 @@ export default function SigningPage() {
                 bgColor: "bg-green-600"
             });
             // Redirect to the clinic selection or authenticated area[cite: 3]
-            router.push(APP_URLS.CLINIC_SELECTION);
+            window.location.href = APP_URLS.CLINIC_SELECTION
         },
         onError: (error: Error) => {
             showToast({

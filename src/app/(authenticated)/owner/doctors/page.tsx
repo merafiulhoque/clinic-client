@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-import { DOCTOR_MODULE_OPTIONS } from "@/shared/config/owner_modules/doctor_modules";
+import { DOCTOR_MODULE_OPTIONS } from "@/shared/config/modules/owner_modules/doctor_modules";
 import { APP_URLS } from "@/shared/config/constants/urls";
 
 const ACCENTS = [

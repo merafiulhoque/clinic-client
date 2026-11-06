@@ -41,6 +41,7 @@ export async function signingAction(data: UserSigninData) {
         });
 
         return { success: true, message: "Signed in successfully" };
+        
     } catch (error) {
         // The api utility parses { error: "msg" } and throws it as error.message[cite: 2]
         return { success: false, message: error instanceof Error ? error.message : "Failed to sign in" };

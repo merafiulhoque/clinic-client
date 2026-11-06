@@ -1,24 +1,34 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuthStore } from "@/shared/stores/auth-store";
 import { getMeAction } from "@/actions/auth/me";
 
 export function AuthInitializer({ children }: { children: React.ReactNode }) {
-  const { user, setUser } = useAuthStore();
+  const { user, setUser, clearUser } = useAuthStore();
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    async function fetchUser() {
-      // Only fetch if we don't already have the user in Zustand
-      if (!user) {
+    async function initializeAuth() {
+      try {
         const me = await getMeAction();
+
         if (me) {
           setUser(me);
+        } else {
+          clearUser();
         }
+      } catch {
+        clearUser();
+      } finally {
+        setInitialized(true);
       }
     }
-    fetchUser();
-  }, [user, setUser]);
+
+    initializeAuth();
+  }, [setUser, clearUser]);
+
+  if (!initialized) return null;
 
   return <>{children}</>;
 }

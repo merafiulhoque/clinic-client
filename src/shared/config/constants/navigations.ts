@@ -38,7 +38,7 @@ export const SIDEBAR_CONFIG: Record<"OWNER" | "STAFF", SidebarItem[]> = {
         },
         {
             title: "Staff Module",
-            href: `${APP_URLS.OWNER_DASHBOARD}/staff`, // Will render cards for staff management
+            href: `${APP_URLS.OWNER_DASHBOARD}/clinic-members`, // Will render cards for staff management
             icon: UserSquare2,
         },
         {
@@ -51,27 +51,27 @@ export const SIDEBAR_CONFIG: Record<"OWNER" | "STAFF", SidebarItem[]> = {
     STAFF: [
         {
             title: "Dashboard",
-            href: APP_URLS.STAFF_DASHBOARD,
+            href: APP_URLS.CLINIC_MEMBER_DASHBOARD,
             icon: LayoutDashboard,
         },
         {
             title: "Book Appointment",
-            href: `${APP_URLS.STAFF_DASHBOARD}/appointments/book`, // Direct task URL
+            href: `${APP_URLS.CLINIC_MEMBER_DASHBOARD}/appointments/book`, // Direct task URL
             icon: CalendarPlus,
         },
         {
             title: "Mark Arrival",
-            href: `${APP_URLS.STAFF_DASHBOARD}/queue/arrival`, // Direct task URL
+            href: `${APP_URLS.CLINIC_MEMBER_DASHBOARD}/queue/arrival`, // Direct task URL
             icon: ClipboardCheck,
         },
         {
             title: "Patient Queue",
-            href: `${APP_URLS.STAFF_DASHBOARD}/queue/view`, // Direct task URL
+            href: `${APP_URLS.CLINIC_MEMBER_DASHBOARD}/queue/view`, // Direct task URL
             icon: ListOrdered,
         },
         {
             title: "Doctors Schedule",
-            href: `${APP_URLS.STAFF_DASHBOARD}/schedule`, // Direct task URL
+            href: `${APP_URLS.CLINIC_MEMBER_DASHBOARD}/schedule`, // Direct task URL
             icon: CalendarDays,
         },
     ],

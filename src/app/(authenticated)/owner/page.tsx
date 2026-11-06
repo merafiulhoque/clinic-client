@@ -1,37 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Stethoscope, UserSquare2, Users, ArrowRight, Activity } from "lucide-react";
+import { ArrowRight, Activity } from "lucide-react";
 
 import { useClinicStore } from "@/shared/stores/clinic-store";
-import { APP_URLS } from "@/shared/config/constants/urls";
+import { MODULES } from "@/shared/config/modules/ownerMainModule";
 
-const MODULES = [
-    {
-        title: "Doctor Module",
-        description: "Manage doctor profiles, assignments, and schedules.",
-        href: `${APP_URLS.OWNER_DASHBOARD}/doctors`,
-        icon: Stethoscope,
-        color: "text-blue-500",
-        bgColor: "bg-blue-500/10",
-    },
-    {
-        title: "Staff Module",
-        description: "Manage receptionists, roles, and system access.",
-        href: `${APP_URLS.OWNER_DASHBOARD}/staff`,
-        icon: UserSquare2,
-        color: "text-green-500",
-        bgColor: "bg-green-500/10",
-    },
-    {
-        title: "Patient Module",
-        description: "View patient records, history, and clinic analytics.",
-        href: `${APP_URLS.OWNER_DASHBOARD}/patients`,
-        icon: Users,
-        color: "text-purple-500",
-        bgColor: "bg-purple-500/10",
-    },
-];
+
 
 export default function OwnerDashboardPage() {
     const { activeClinic } = useClinicStore();

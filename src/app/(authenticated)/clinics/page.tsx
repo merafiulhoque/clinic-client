@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
 import { Building2, MapPin, Plus, ArrowRight } from "lucide-react";
@@ -41,7 +41,7 @@ export default function ClinicSelectionPage() {
         if (item.role === "OWNER") {
             router.push(APP_URLS.OWNER_DASHBOARD);
         } else {
-            router.push(APP_URLS.STAFF_DASHBOARD);
+            router.push(APP_URLS.CLINIC_MEMBER_DASHBOARD);
         }
     };
 

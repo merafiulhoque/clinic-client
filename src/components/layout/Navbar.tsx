@@ -36,7 +36,7 @@ export function Navbar() {
         if (clinic.role === "OWNER") {
             router.push(APP_URLS.OWNER_DASHBOARD);
         } else {
-            router.push(APP_URLS.STAFF_DASHBOARD);
+            router.push(APP_URLS.CLINIC_MEMBER_DASHBOARD);
         }
     };
 

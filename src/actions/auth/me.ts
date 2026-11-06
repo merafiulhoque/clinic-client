@@ -21,6 +21,7 @@ export async function getMeAction(): Promise<AuthUser | null> {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(user)
     return user;
   } catch (error) {
     console.error("Failed to fetch user:", error);
