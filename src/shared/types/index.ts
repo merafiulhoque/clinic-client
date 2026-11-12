@@ -20,3 +20,15 @@ export type DoctorListItem = {
   fullName: string;
   clinics: DoctorClinic[];
 };
+
+export type Weekday = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+
+export type PublicSchedule = {
+  scheduleId: number;
+  doctorClinicId: number;
+  dayOfWeek: Weekday;
+  startTime: number; // Integer (minutes from midnight)
+  endTime: number;   // Integer (minutes from midnight)
+};
+
+

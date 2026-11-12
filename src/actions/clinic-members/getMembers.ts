@@ -3,10 +3,12 @@
 import { cookies } from "next/headers";
 import { api } from "@/shared/api";
 import { API_ENDPOINTS } from "@/shared/config/constants/api_endpoints";
+import { Role } from "@/shared/types/schemas";
 
 export type ClinicMemberSummary = {
   id: number;
   name: string;
+  role: Role
 };
 
 export async function getClinicMembersAction(clinicId: number): Promise<ClinicMemberSummary[]> {

@@ -27,3 +27,35 @@ export const MODULES = [
         bgColor: "bg-purple-500/10",
     },
 ];
+
+// Theme-aware accent per module (keeps visual distinction, works in both themes)
+export const MODULE_ACCENTS: Record<
+    string,
+    { iconDark: string; iconLight: string; bgDark: string; bgLight: string }
+> = {
+    "Doctor Module": {
+        iconDark: "text-emerald-400",
+        iconLight: "text-indigo-600",
+        bgDark: "bg-emerald-500/10",
+        bgLight: "bg-indigo-50",
+    },
+    "Clinic Member Module": {
+        iconDark: "text-amber-300",
+        iconLight: "text-amber-600",
+        bgDark: "bg-amber-500/10",
+        bgLight: "bg-amber-50",
+    },
+    "Patient Module": {
+        iconDark: "text-sky-400",
+        iconLight: "text-sky-600",
+        bgDark: "bg-sky-500/10",
+        bgLight: "bg-sky-50",
+    },
+};
+
+export const FALLBACK_ACCENT = {
+    iconDark: "text-emerald-400",
+    iconLight: "text-indigo-600",
+    bgDark: "bg-emerald-500/10",
+    bgLight: "bg-indigo-50",
+};

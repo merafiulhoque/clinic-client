@@ -16,6 +16,7 @@ export const API_ENDPOINTS = {
     DOCTOR: {
         CREATE: "/api/v1/doctor/create",
         GET_LIST: "/api/v1/doctor/get-list",
+        ALL: "/api/v1/doctor/all-doctors-lookup"
     },
     SCHEDULE: {
         CREATE: "/api/v1/schedule/create",
@@ -28,9 +29,9 @@ export const API_ENDPOINTS = {
         VIEW_DOCTORS: "/api/v1/public-corner/view-doctors",
         BOOK_SLOT: "/api/v1/public-corner/book-slot",
         // Dynamic path helpers for doctorClinicId parameters
-        getSchedule: (doctorClinicId: number | string) =>
+        GET_SCHEDULE: (doctorClinicId: number | string) =>
             `/api/v1/public-corner/${doctorClinicId}/schedule`,
-        getSlots: (doctorClinicId: number | string) =>
+        GET_SLOTS: (doctorClinicId: number | string) =>
             `/api/v1/public-corner/${doctorClinicId}/slots`,
     },
 } as const;

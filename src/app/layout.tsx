@@ -18,15 +18,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
-      <body className={inter.className}>
-      <QueryProvider>
-        {children}
-      </QueryProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                try {
+                  const stored = localStorage.getItem("clinic-theme-storage");
+                  const theme = stored
+                    ? JSON.parse(stored)?.state?.theme
+                    : "light";
 
-      {/* Render toaster outside of QueryProvider at the root level */}
-      <Toaster />
-      </body>
+                  document.documentElement.setAttribute(
+                    "data-theme",
+                    theme === "dark" ? "dark" : "light"
+                  );
+                } catch (e) {}
+              `,
+            }}
+          />
+        </head>
+        <body className={inter.className}>
+        <QueryProvider>
+          {children}
+        </QueryProvider>
+
+        {/* Render toaster outside of QueryProvider at the root level */}
+        <Toaster />
+        </body>
       </html>
   );
 }

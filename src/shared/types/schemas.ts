@@ -91,3 +91,70 @@ export const memberCreateSchema = z.object({
 })
 
 export type memberCreateData = z.infer<typeof memberCreateSchema>
+
+
+export const publicDoctorSearchSchema = z.object({
+  clinicName: z.string().trim().min(1).optional(),
+  doctorName: z.string().trim().min(1).optional(),
+  location: z.string().trim().min(1).optional(),
+  specialization: z.string().trim().min(1).optional(),
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(20),
+});
+
+export type PublicDoctorSearchData = z.infer<typeof publicDoctorSearchSchema>;
+
+// The form schema without page and limit
+export const searchFormSchema = publicDoctorSearchSchema.omit({ page: true, limit: true });
+export type SearchFormData = z.infer<typeof searchFormSchema>;
+
+export type PublicDoctorClinic = {
+  doctorClinicId: number;
+  clinicId: number;
+  clinicName: string;
+  clinicLocation: string;
+  fees: number;
+};
+
+export type PublicDoctor = {
+  doctorId: number;
+  doctorName: string;
+  doctorQualification: string | null;
+  doctorAdditionalQualification: string | null;
+  doctorSpecialization: string | null;
+  doctorClinics: PublicDoctorClinic[];
+};
+
+
+export type PublicSlot = {
+  scheduleId: number;
+  availableTime: number; // minutes from midnight
+};
+
+// You can use this for React Hook Form validation on the client
+export const bookingFormSchema = z.object({
+  scheduleId: z.number().int().positive(),
+  appointmentDate: z.string().min(1), // YYYY-MM-DD
+  patientName: z.string().trim().min(1, "Name is required"),
+  patientEmail: z.string().email("Invalid email"),
+  patientPhone: z.string().trim().min(10).max(20).regex(/^[+0-9\s-]+$/, "Invalid phone format"),
+  idempotencyKey: z.string().uuid(),
+});
+
+export type BookingFormData = z.infer<typeof bookingFormSchema>;
+
+export type AppointmentResponse = {
+  id: number;
+  startTime: number;
+  endTime: number;
+  appointmentDate: Date;
+  doctorScheduleId: number;
+  status: string;
+};
+
+
+export type DoctorLookupResult = {
+  doctorId: number;
+  doctorName: string;
+  doctorQualification: string;
+};
