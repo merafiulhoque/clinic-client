@@ -29,9 +29,6 @@ export async function api<T>(
             ? { body: JSON.stringify(body) }
             : {}),
     });
-
-    console.log(res.body)
-
     const contentType = res.headers.get("content-type");
 
     // Handle non-2xx backend error responses by throwing an Error

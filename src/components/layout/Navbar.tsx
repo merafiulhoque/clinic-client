@@ -97,7 +97,7 @@ export function Navbar() {
                         }`}
                     >
                         <span className="truncate max-w-[110px] sm:max-w-[200px]">
-                            {activeClinic?.clinicName || "Select Clinic"}
+                            {activeClinic?.clinicName + ", " + activeClinic?.clinicLocation|| "Select Clinic"}
                         </span>
                         <ChevronDown
                             className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
@@ -125,7 +125,7 @@ export function Navbar() {
                                             : "border-amber-100 hover:bg-amber-50 text-zinc-800"
                                     }`}
                                 >
-                                    <span className="truncate">{item.clinicName}</span>
+                                    <span className="truncate">{item.clinicName + ", " + item.clinicLocation}</span>
                                     <span
                                         className={`text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded ring-1 shrink-0 ${
                                             item.role === "OWNER"

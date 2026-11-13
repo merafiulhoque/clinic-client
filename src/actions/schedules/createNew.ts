@@ -49,7 +49,6 @@ import { api } from "@/shared/api";
 import { createScheduleSchema, createScheduleData } from "@/shared/types/schemas";
 
 export async function createNewScheduleAction(data: createScheduleData) {
-  console.log(data)
   const parsed = createScheduleSchema.safeParse(data);
   
   if (!parsed.success) {

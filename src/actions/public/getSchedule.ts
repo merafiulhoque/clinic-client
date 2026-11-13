@@ -8,7 +8,6 @@ export async function getDoctorScheduleAction(publicId: string): Promise<PublicS
   // 1. Decode "J8xKp2" back to 15
   const doctorClinicId = decodeId(publicId);
 
-  console.log(doctorClinicId, publicId)
   
   if (!doctorClinicId) {
     throw new Error("Invalid clinic link");

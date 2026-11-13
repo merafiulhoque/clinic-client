@@ -7,7 +7,6 @@ import {API_ENDPOINTS} from "@/shared/config/constants/api_endpoints";
 
 
 export async function createClinicAction(data: ClinicCreateData) {
-    console.log(data)
     const parsed = clinicCreateSchema.safeParse(data);
     if (!parsed.success) {
         return { success: false, message: "Invalid form data provided" };
