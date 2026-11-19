@@ -10,7 +10,7 @@ export default function LandingPage() {
     const isDark = theme === "dark";
 
     return (
-        <div
+        <main
             className={`relative min-h-screen flex flex-col items-center justify-center p-6 text-center overflow-hidden transition-colors duration-500 ${
                 isDark ? "bg-black text-white" : "bg-white text-black"
             }`}
@@ -91,7 +91,7 @@ export default function LandingPage() {
                     style={{ animationDelay: "0.2s" }}
                 >
                     <Link
-                        href={APP_URLS.PUBLIC_DIRECTORY}
+                        href={APP_URLS.PATIENTS_CORNER}
                         className={`group flex items-center gap-2 px-8 py-3 rounded-lg font-semibold w-full sm:w-auto justify-center
                         shadow-md transition-all duration-200 ease-out
                         hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98]
@@ -128,7 +128,8 @@ export default function LandingPage() {
                     style={{ animationDelay: "0.3s" }}
                 >
                     <Link
-                        href={APP_URLS.PATIENTS_CORNER}
+                        href={APP_URLS.PUBLIC_DIRECTORY}
+                        prefetch={ false } 
                         className={`group inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold w-full sm:w-auto justify-center
                         shadow-lg transition-all duration-200 ease-out
                         hover:-translate-y-0.5 hover:shadow-2xl active:translate-y-0 active:scale-[0.98]
@@ -164,6 +165,6 @@ export default function LandingPage() {
                 </div>
 
             </div>
-        </div>
+        </main>
     );
 }
