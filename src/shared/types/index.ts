@@ -32,3 +32,8 @@ export type PublicSchedule = {
 };
 
 
+export type ClinicStats = {
+  totalDoctors: number;
+  totalMember: number;
+  totalPatient: number;
+};

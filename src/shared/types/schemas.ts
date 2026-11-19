@@ -94,10 +94,10 @@ export type memberCreateData = z.infer<typeof memberCreateSchema>
 
 
 export const publicDoctorSearchSchema = z.object({
-  clinicName: z.string().trim().min(1).optional(),
-  doctorName: z.string().trim().min(1).optional(),
-  location: z.string().trim().min(1).optional(),
-  specialization: z.string().trim().min(1).optional(),
+  clinicName: z.string().trim().optional(),
+  doctorName: z.string().trim().optional(),
+  location: z.string().trim().optional(),
+  specialization: z.string().trim().optional(),
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(20),
 });

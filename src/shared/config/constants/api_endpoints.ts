@@ -8,6 +8,7 @@ export const API_ENDPOINTS = {
     CLINIC: {
         CREATE: "/api/v1/clinic/create",
         GET_INFO: "/api/v1/clinic/get-info",
+        GET_STAT: (clinicId: number | string) => `/api/v1/clinic/${clinicId}/get-stat`
     },
     CLINIC_MEMBER: {
         CREATE: "/api/v1/member/create",

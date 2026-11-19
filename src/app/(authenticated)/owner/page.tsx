@@ -6,6 +6,8 @@ import { ArrowRight, Activity, Stethoscope, UserSquare2, Users } from "lucide-re
 import { useClinicStore } from "@/shared/stores/clinic-store";
 import { FALLBACK_ACCENT, MODULE_ACCENTS, MODULES } from "@/shared/config/modules/ownerMainModule";
 import { useThemeStore } from "@/shared/stores/theme-store";
+import { getClinicStatsAction } from "@/actions/clinics/getStat";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -14,10 +16,17 @@ export default function OwnerDashboardPage() {
     const { theme } = useThemeStore();
     const isDark = theme === "dark";
 
-    const stats = [
-        { label: "Total Doctors", value: "0", Icon: Stethoscope },
-        { label: "Active Staff", value: "0", Icon: Users },
-        { label: "Today's Appointments", value: "0", Icon: Activity },
+    const { data: stats, isLoading, error } = useQuery({
+        queryKey: ["clinic", "stats", activeClinic?.clinicId],
+        queryFn: () => getClinicStatsAction(activeClinic!.clinicId),
+        enabled: !!activeClinic?.clinicId, // Waits until Zustand hydrates activeClinic
+        });
+    
+    
+    const Stats = [
+        { label: "Total Doctors", value: stats?.totalDoctors, Icon: Stethoscope },
+        { label: "Active Staff", value: stats?.totalMember, Icon: Users },
+        { label: "Today's Appointments", value: stats?.totalPatient, Icon: Activity },
     ];
 
     return (
@@ -46,7 +55,7 @@ export default function OwnerDashboardPage() {
                                 : "bg-indigo-50 text-indigo-600 ring-indigo-200"
                         }`}
                     >
-                        {activeClinic?.clinicName || "your clinic"}
+                        {activeClinic?.clinicName  || "your clinic"}
                     </span>
                     .
                 </p>
@@ -54,7 +63,7 @@ export default function OwnerDashboardPage() {
 
             {/* ===== Quick Stats ===== */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {stats.map((stat, i) => {
+                {Stats.map((stat, i) => {
                     const { Icon } = stat;
                     return (
                         <div
@@ -76,7 +85,7 @@ export default function OwnerDashboardPage() {
                                 >
                                     {stat.label}
                                 </p>
-                                <h3 className="text-2xl font-bold mt-1">{stat.value}</h3>
+                                <h3 className="text-2xl font-bold mt-1">{isLoading ? "..." : stat.value ?? 0}</h3>
                             </div>
                             <div
                                 className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${

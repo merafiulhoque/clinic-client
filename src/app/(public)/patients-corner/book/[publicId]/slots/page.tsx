@@ -30,6 +30,7 @@ import { showToast } from "@/shared/stores/toast-store";
 import { APP_URLS } from "@/shared/config/constants/urls";
 import { useThemeStore } from "@/shared/stores/theme-store";
 import FullScreenLoader from "@/components/ui/Loader";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ViewSlotsPage({
     params,
@@ -68,7 +69,7 @@ export default function ViewSlotsPage({
         resolver: zodResolver(bookingFormSchema),
         defaultValues: {
             appointmentDate: date,
-            idempotencyKey: crypto.randomUUID(),
+            idempotencyKey: uuidv4(),
         },
     });
 

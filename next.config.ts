@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  allowedDevOrigins: ["10.159.83.166"],
+  allowedDevOrigins: ["10.170.195.166"],
   turbopack: {
     rules: {
       "*.css": {

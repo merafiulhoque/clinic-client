@@ -29,10 +29,7 @@ export default function PublicDoctorSearchPage() {
     const { theme } = useThemeStore();
     const isDark = theme === "dark";
 
-    const [searchParams, setSearchParams] = useState<PublicDoctorSearchData>({
-        page: 1,
-        limit: 20,
-    });
+    const [searchParams, setSearchParams] = useState<PublicDoctorSearchData | null>(null);
 
     const {
         register,
@@ -55,7 +52,8 @@ export default function PublicDoctorSearchPage() {
         error,
     } = useQuery({
         queryKey: ["public-doctors", searchParams],
-        queryFn: () => searchDoctorsAction(searchParams),
+        queryFn: () => searchDoctorsAction(searchParams!),
+        enabled: searchParams !== null,
     });
 
     const onSubmit = (data: SearchFormData) => {
@@ -202,7 +200,7 @@ export default function PublicDoctorSearchPage() {
                                     {errors.doctorName.message}
                                 </p>
                             ) : (
-                                <p className={`mt-1.5 text-[10px] ${isDark ? "text-zinc-500" : "text-zinc-500"}`}>
+                                <p className="mt-1.5 text-[10px] text-zinc-500">
                                     e.g. Smith
                                 </p>
                             )}
@@ -228,7 +226,7 @@ export default function PublicDoctorSearchPage() {
                                     {errors.specialization.message}
                                 </p>
                             ) : (
-                                <p className={`mt-1.5 text-[10px] ${isDark ? "text-zinc-500" : "text-zinc-500"}`}>
+                                <p className="mt-1.5 text-[10px] text-zinc-500">
                                     e.g. Cardiologist
                                 </p>
                             )}
@@ -254,7 +252,7 @@ export default function PublicDoctorSearchPage() {
                                     {errors.clinicName.message}
                                 </p>
                             ) : (
-                                <p className={`mt-1.5 text-[10px] ${isDark ? "text-zinc-500" : "text-zinc-500"}`}>
+                                <p className="mt-1.5 text-[10px] text-zinc-500">
                                     e.g. City Care
                                 </p>
                             )}
@@ -280,14 +278,18 @@ export default function PublicDoctorSearchPage() {
                                     {errors.location.message}
                                 </p>
                             ) : (
-                                <p className={`mt-1.5 text-[10px] ${isDark ? "text-zinc-500" : "text-zinc-500"}`}>
+                                <p className="mt-1.5 text-[10px] text-zinc-500">
                                     e.g. New York
                                 </p>
                             )}
                         </div>
                     </div>
 
-                    <div className="flex justify-end pt-5 mt-5 border-t ${isDark ? 'border-emerald-500/10' : 'border-amber-200/60'}">
+                    <div
+                        className={`flex justify-end pt-5 mt-5 border-t ${
+                            isDark ? "border-emerald-500/10" : "border-amber-200/60"
+                        }`}
+                    >
                         <button
                             type="submit"
                             className={`inline-flex items-center justify-center gap-2 h-11 px-7 rounded-lg text-sm font-semibold
@@ -308,7 +310,29 @@ export default function PublicDoctorSearchPage() {
 
                 {/* ===== Results ===== */}
                 <div className="flex flex-col gap-5">
-                    {isLoading ? (
+                    {searchParams === null ? (
+                        <div
+                            className={`max-w-lg mx-auto mt-4 p-8 rounded-2xl border text-center shadow-lg animate-fade-slide-up ${
+                                isDark
+                                    ? "bg-zinc-900/60 border-emerald-500/20 shadow-emerald-500/5"
+                                    : "bg-white border-amber-200 shadow-indigo-500/5"
+                            }`}
+                        >
+                            <div
+                                className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
+                                    isDark
+                                        ? "bg-emerald-500/10 ring-2 ring-emerald-500/30 text-emerald-400"
+                                        : "bg-indigo-500/10 ring-2 ring-indigo-500/30 text-indigo-500"
+                                }`}
+                            >
+                                <Search className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-lg font-semibold mb-2">Ready to search</h3>
+                            <p className={`text-sm ${isDark ? "text-zinc-400" : "text-zinc-600"}`}>
+                                Enter any filters above or click Search to view all available doctors.
+                            </p>
+                        </div>
+                    ) : isLoading ? (
                         <FullScreenLoader message="Searching for doctors..." />
                     ) : isError ? (
                         <div
@@ -413,11 +437,7 @@ export default function PublicDoctorSearchPage() {
                                             Available at Clinics
                                         </h3>
                                         {doctor.doctorClinics.length === 0 ? (
-                                            <span
-                                                className={`text-sm ${
-                                                    isDark ? "text-zinc-500" : "text-zinc-500"
-                                                }`}
-                                            >
+                                            <span className="text-sm text-zinc-500">
                                                 No clinics assigned yet.
                                             </span>
                                         ) : (
