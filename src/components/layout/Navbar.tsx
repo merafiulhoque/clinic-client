@@ -14,6 +14,7 @@ import { useClinicStore, UserClinicInfo } from "@/shared/stores/clinic-store";
 import { useAuthStore } from "@/shared/stores/auth-store";
 import { APP_URLS } from "@/shared/config/constants/urls";
 import { useThemeStore } from "@/shared/stores/theme-store";
+import { formatClinicName } from "@/shared/utils/formatClinicName";
 
 export function Navbar() {
     const router = useRouter();
@@ -97,7 +98,7 @@ export function Navbar() {
                         }`}
                     >
                         <span className="truncate max-w-[110px] sm:max-w-[200px]">
-                            {activeClinic?.clinicName + ", " + activeClinic?.clinicLocation|| "Select Clinic"}
+                            {formatClinicName(activeClinic)}
                         </span>
                         <ChevronDown
                             className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
@@ -125,7 +126,7 @@ export function Navbar() {
                                             : "border-amber-100 hover:bg-amber-50 text-zinc-800"
                                     }`}
                                 >
-                                    <span className="truncate">{item.clinicName + ", " + item.clinicLocation}</span>
+                                    <span className="truncate">{formatClinicName(item)}</span>
                                     <span
                                         className={`text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded ring-1 shrink-0 ${
                                             item.role === "OWNER"

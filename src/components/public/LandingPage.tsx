@@ -52,7 +52,7 @@ export default function LandingPage() {
                             className={`h-12 w-12 ${isDark ? "text-emerald-400" : "text-indigo-500"}`}
                         />
                         <span
-                            className={`absolute inset-0 rounded-full animate-ping opacity-20 ${
+                            className={`absolute inset-0 rounded-full opacity-20 ${
                                 isDark ? "bg-emerald-500" : "bg-indigo-500"
                             }`}
                         />

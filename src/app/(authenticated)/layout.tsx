@@ -1,32 +1,20 @@
-"use client";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { APP_URLS } from "@/shared/config/constants/urls";
+import AuthenticatedShell from "@/components/layout/AuthenticatedShell";
 
-import { AuthInitializer } from "@/components/utility/auth-initializer";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Navbar } from "@/components/layout/Navbar";
-import { useThemeStore } from "@/shared/stores/theme-store";
+export default async function AuthenticatedLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    const cookieStore = await cookies();
+    // Match the exact cookie name used in your sign-in action (e.g. "accessToken" or "access_token")
+    const token = cookieStore.get("accessToken")?.value;
 
-export default function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
-    const { theme } = useThemeStore();
-    const isDark = theme === "dark";
+    if (!token) {
+        redirect(APP_URLS.SIGN_IN);
+    }
 
-    return (
-        <AuthInitializer>
-            <div
-                className={`flex h-screen overflow-hidden transition-colors duration-300 ${
-                    isDark ? "bg-black text-white" : "bg-[#fdfcfb] text-black"
-                }`}
-            >
-                <Sidebar />
-                <div className="flex-1 flex flex-col min-w-0">
-                    <Navbar />
-                    <main
-                        className={`flex-1 overflow-y-auto px-3 sm:px-4 pt-3 pb-20 md:pb-3
-                        [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none`}
-                    >
-                        {children}
-                    </main>
-                </div>
-            </div>
-        </AuthInitializer>
-    );
+    return <AuthenticatedShell>{children}</AuthenticatedShell>;
 }
