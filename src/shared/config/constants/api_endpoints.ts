@@ -35,4 +35,10 @@ export const API_ENDPOINTS = {
         GET_SLOTS: (doctorClinicId: number | string) =>
             `/api/v1/public-corner/${doctorClinicId}/slots`,
     },
+
+    OWNER_VIEW_APPOINTMENTS: (clinicId: string | number, query: string ) => `/api/v1/patient-module/${clinicId}/appointments?${query}`,
+    OWNER_WALKING_PATIENT_REGISTRATION: `/api/v1/patient-module/walkin-patient-registration`,
+    OWNER_GET_TODAYS_SCHEDULES: (clinicId: number | string) => `/api/v1/patient-module/${clinicId}/schedules`,
+    OWNER_PATIENT_LOOKUP: (clinicId: number | string, query: string) =>
+    `/api/v1/patient-module/${clinicId}/patient-lookup${query ? `?${query}` : ""}`,
 } as const;

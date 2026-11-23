@@ -1,5 +1,5 @@
 import { Stethoscope, Users, UserSquare2 } from "lucide-react";
-import { APP_URLS } from "../constants/urls";
+import { APP_URLS } from "../../constants/urls";
 
 export const MODULES = [
     {
@@ -21,7 +21,7 @@ export const MODULES = [
     {
         title: "Patient Module",
         description: "View patient records, history, and clinic analytics.",
-        href: `${APP_URLS.OWNER_DASHBOARD}/patients`,
+        href: `${APP_URLS.OWNER_DASHBOARD}/patient-module`,
         icon: Users,
         color: "text-purple-500",
         bgColor: "bg-purple-500/10",

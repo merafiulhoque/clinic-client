@@ -1,25 +1,30 @@
 import { ArrowLeftRight, UserCog, UserPlus, Users } from "lucide-react";
+import icon from "lucide-react/icons/";
 
 export const CLINIC_MEMBER_MODULE_OPTIONS = [
   {
     title: "Create Clinic Member",
     description: "Add a new staff member to the system.",
     href: "/owner/clinic-members/create",
+    icon: UserPlus
   },
   {
     title: "View Clinic Members",
     description: "See all staff members across your clinics.",
     href: "/owner/clinic-members/view",
+    icon: Users
   },
   {
     title: "Assign to Another Clinic",
     description: "Assign an existing clinic member to a different clinic.",
     href: "/owner/clinic-members/assign",
+    icon: ArrowLeftRight
   },
   {
     title: "Modify Clinic Member Details",
     description: "Update roles or details of existing staff.",
     href: "/owner/clinic-members/modify",
+    icon: UserCog
   },
 ];
 

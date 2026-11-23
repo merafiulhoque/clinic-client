@@ -76,9 +76,6 @@ export type createScheduleData = z.infer<typeof createScheduleSchema>
 
 export enum Role  {
     OWNER="OWNER",
-    STAFF="STAFF",
-    RECEPTIONIST="RECEPTIONIST",
-    DOCTOR="DOCTOR",
     MANAGER="MANAGER"
 }
 
@@ -136,7 +133,6 @@ export const bookingFormSchema = z.object({
   scheduleId: z.number().int().positive(),
   appointmentDate: z.string().min(1), // YYYY-MM-DD
   patientName: z.string().trim().min(1, "Name is required"),
-  patientEmail: z.string().email("Invalid email"),
   patientPhone: z.string().trim().min(10).max(20).regex(/^[+0-9\s-]+$/, "Invalid phone format"),
   idempotencyKey: z.string().uuid(),
 });

@@ -7,7 +7,7 @@ export async function api<T>(
         method = "GET",
         body,
         credentials = "omit",
-        headers = {},
+        headers = {}
     }: RequestOptions = {}
 ): Promise<T> {
     const baseUrl = process.env.API_BASE_URL;
@@ -28,6 +28,7 @@ export async function api<T>(
         ...(body !== undefined && method !== "GET"
             ? { body: JSON.stringify(body) }
             : {}),
+        cache: "no-store"
     });
     const contentType = res.headers.get("content-type");
 
@@ -42,6 +43,10 @@ export async function api<T>(
             errorMessage = await res.text();
         }
         throw new Error(errorMessage);
+    }
+
+    if (res.status === 204) {
+        return undefined as T
     }
 
     // Handle 2xx success responses by returning the raw data

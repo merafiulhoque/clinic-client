@@ -37,3 +37,52 @@ export type ClinicStats = {
   totalMember: number;
   totalPatient: number;
 };
+
+
+export type AppointmentStatus = "BOOKED" | "CHECKED_IN" | "COMPLETED" | "CANCELLED"; // match your Prisma enum
+
+export interface AppointmentItem {
+    appointmentId: number;
+    patientName: string;
+    appointmentDate: string; // ISO string from JSON
+    appointmentTime: number; // minutes from midnight
+    appointmentStatus: AppointmentStatus;
+    doctorName: string;
+}
+
+export type ViewAppointmentParams =
+    | { type: "today"; page: number; limit: number }
+    | { type: "all"; page: number; limit: number }
+    | { type: "range"; from: string; to: string; page: number; limit: number };
+
+export interface TodayScheduleItem {
+    id: number;
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    qualification: string;
+    startTime: number;
+    endTime: number;
+    lastAppointmentEnd: number | null;
+}
+
+
+export interface WalkinBookingResult {
+    patientName: string;
+    doctorName: string;
+    clinicName: string;
+    clinicLocation: string;
+    appointmentDate: string;
+    appointmentTime: string;
+    AppointmentStatus: AppointmentStatus;
+}
+
+export interface PatientLookupItem {
+    patientName: string;
+    patientPhone: string;
+}
+
+export interface PatientLookupParams {
+    patientName?: string;
+    patientPhone?: string;
+}

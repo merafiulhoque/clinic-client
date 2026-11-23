@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Activity, Stethoscope, UserSquare2, Users } from "lucide-react";
 
 import { useClinicStore } from "@/shared/stores/clinic-store";
-import { FALLBACK_ACCENT, MODULE_ACCENTS, MODULES } from "@/shared/config/modules/ownerMainModule";
+import { FALLBACK_ACCENT, MODULE_ACCENTS, MODULES } from "@/shared/config/modules/owner_modules/ownerMainModule";
 import { useThemeStore } from "@/shared/stores/theme-store";
 import { getClinicStatsAction } from "@/actions/clinics/getStat";
 import { useQuery } from "@tanstack/react-query";
@@ -16,10 +16,12 @@ export default function OwnerDashboardPage() {
     const { theme } = useThemeStore();
     const isDark = theme === "dark";
 
-    const { data: stats, isLoading, error } = useQuery({
-        queryKey: ["clinic", "stats", activeClinic?.clinicId],
-        queryFn: () => getClinicStatsAction(activeClinic!.clinicId),
-        enabled: !!activeClinic?.clinicId, // Waits until Zustand hydrates activeClinic
+    const { data: stats, isLoading } = useQuery({
+            queryKey: ["clinic", "stats", activeClinic?.clinicId],
+            queryFn: () => getClinicStatsAction(activeClinic!.clinicId),
+            enabled: !!activeClinic?.clinicId, // Waits until Zustand hydrates activeClinic
+            staleTime: 2*60*1000 , // 2 minutes
+            refetchInterval: 2*60*1000 // 2 minutes
         });
     
     
@@ -55,7 +57,7 @@ export default function OwnerDashboardPage() {
                                 : "bg-indigo-50 text-indigo-600 ring-indigo-200"
                         }`}
                     >
-                        {activeClinic?.clinicName  || "your clinic"}
+                        {activeClinic? activeClinic.clinicName + " - " + activeClinic.clinicLocation : "your clinic"}
                     </span>
                     .
                 </p>

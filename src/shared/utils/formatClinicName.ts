@@ -5,5 +5,5 @@ export const formatClinicName = (
 ): string => {
     if (!clinic) return "Select Clinic"
     if (!clinic.clinicName || clinic.clinicName === undefined || !clinic.clinicLocation || clinic.clinicLocation === undefined) return "Select your clinic"
-    return clinic.clinicName + " " + clinic.clinicLocation
+    return clinic.clinicName + " - " + clinic.clinicLocation
 }
