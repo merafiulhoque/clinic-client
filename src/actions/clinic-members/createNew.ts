@@ -2,10 +2,10 @@
 
 import { cookies } from "next/headers";
 import { api } from "@/shared/api";
-import { memberCreateSchema, memberCreateData } from "@/shared/types/schemas";
+import { MemberCreateData, memberCreateSchema } from "@/shared/types/schemas";
 import { API_ENDPOINTS } from "@/shared/config/constants/api_endpoints";
 
-export async function createClinicMemberAction(data: memberCreateData) {
+export async function createClinicMemberAction(data: MemberCreateData) {
   const parsed = memberCreateSchema.safeParse(data);
   
   if (!parsed.success) {

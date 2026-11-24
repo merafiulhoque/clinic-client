@@ -3,10 +3,10 @@
 import { cookies } from "next/headers";
 import { api } from "@/shared/api";
 import { 
-  DoctorLookupResult, 
   assignDoctorToClinicSchema, 
   AssignDoctorToClinicData 
 } from "@/shared/types/schemas";
+import { DoctorLookupResult } from "@/shared/types";
 
 export async function lookupDoctorsAction(page = 1, limit = 20): Promise<DoctorLookupResult[]> {
   const cookieStore = await cookies();

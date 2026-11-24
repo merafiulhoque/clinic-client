@@ -5,6 +5,8 @@ export const APP_URLS = {
     HOME: "/",
     SIGN_UP: "/signup",
     SIGN_IN: "/signin",
+    PASSWORD_RESET_LINK: "/password-reset-link",
+    PASSWORD_RESET: "/password-reset",
 
     //
 

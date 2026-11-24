@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 import { useClinicStore } from "@/shared/stores/clinic-store";
-import { memberCreateSchema, memberCreateData } from "@/shared/types/schemas";
+import { MemberCreateData, memberCreateSchema } from "@/shared/types/schemas";
 import { createClinicMemberAction } from "@/actions/clinic-members/createNew";
 import { showToast } from "@/shared/stores/toast-store";
 import { APP_URLS } from "@/shared/config/constants/urls";
@@ -29,7 +29,7 @@ export default function CreateClinicMemberPage() {
         handleSubmit,
         reset,
         formState: { errors },
-    } = useForm<memberCreateData>({
+    } = useForm<MemberCreateData>({
         resolver: zodResolver(memberCreateSchema),
         defaultValues: {
             clinicId: activeClinic?.clinicId,
@@ -37,7 +37,7 @@ export default function CreateClinicMemberPage() {
     });
 
     const memberMutation = useMutation({
-        mutationFn: async (payload: memberCreateData) => {
+        mutationFn: async (payload: MemberCreateData) => {
             const result = await createClinicMemberAction(payload);
             if (!result.success) throw new Error(result.message);
             return result;
@@ -65,7 +65,7 @@ export default function CreateClinicMemberPage() {
         },
     });
 
-    const onSubmit = (data: memberCreateData) => {
+    const onSubmit = (data: MemberCreateData) => {
         memberMutation.mutate(data);
     };
 

@@ -21,6 +21,12 @@ export type DoctorListItem = {
   clinics: DoctorClinic[];
 };
 
+
+export enum Role  {
+    OWNER="OWNER",
+    MANAGER="MANAGER"
+}
+
 export type Weekday = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
 
 export type PublicSchedule = {
@@ -86,3 +92,43 @@ export interface PatientLookupParams {
     patientName?: string;
     patientPhone?: string;
 }
+
+export type AppointmentResponse = {
+  id: number;
+  startTime: number;
+  endTime: number;
+  appointmentDate: Date;
+  doctorScheduleId: number;
+  status: string;
+};
+
+
+export type DoctorLookupResult = {
+  doctorId: number;
+  doctorName: string;
+  doctorQualification: string;
+};
+
+
+export type PublicSlot = {
+  scheduleId: number;
+  availableTime: number; // minutes from midnight
+};
+
+
+export type PublicDoctorClinic = {
+  doctorClinicId: number;
+  clinicId: number;
+  clinicName: string;
+  clinicLocation: string;
+  fees: number;
+};
+
+export type PublicDoctor = {
+  doctorId: number;
+  doctorName: string;
+  doctorQualification: string | null;
+  doctorAdditionalQualification: string | null;
+  doctorSpecialization: string | null;
+  doctorClinics: PublicDoctorClinic[];
+};

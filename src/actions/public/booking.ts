@@ -1,7 +1,8 @@
 "use server";
 
 import { api } from "@/shared/api";
-import { AppointmentResponse, BookingFormData, bookingFormSchema, PublicSlot } from "@/shared/types/schemas";
+import { AppointmentResponse, PublicSlot } from "@/shared/types";
+import { BookingFormData, bookingFormSchema } from "@/shared/types/schemas";
 import { decodeId } from "@/shared/utils/hashids";
 
 // 1. Fetch available slots

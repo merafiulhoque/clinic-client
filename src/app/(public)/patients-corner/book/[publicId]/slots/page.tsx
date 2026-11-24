@@ -9,21 +9,15 @@ import Link from "next/link";
 import {
     ArrowLeft,
     Clock,
-    Calendar,
     CalendarCheck,
     CheckCircle2,
     AlertCircle,
-    User,
-    Mail,
-    Phone,
-    Loader2,
 } from "lucide-react";
 
 import { getSlotsAction, bookSlotAction } from "@/actions/public/booking";
 import {
     BookingFormData,
     bookingFormSchema,
-    PublicSlot,
 } from "@/shared/types/schemas";
 import { minutesToTime } from "@/shared/utils/formatTime";
 import { showToast } from "@/shared/stores/toast-store";
@@ -32,6 +26,7 @@ import { useThemeStore } from "@/shared/stores/theme-store";
 import FullScreenLoader from "@/components/ui/Loader";
 import { v4 as uuidv4 } from "uuid";
 import { PatientBookingForm } from "@/components/re-usables/PatientBookingForm";
+import { PublicSlot } from "@/shared/types";
 
 export default function ViewSlotsPage({
     params,

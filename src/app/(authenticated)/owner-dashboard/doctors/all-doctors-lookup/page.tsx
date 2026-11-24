@@ -21,12 +21,12 @@ import { lookupDoctorsAction } from "@/actions/doctors/lookupAction";
 import {
     assignDoctorToClinicSchema,
     AssignDoctorToClinicData,
-    DoctorLookupResult,
 } from "@/shared/types/schemas";
 import { assignDoctorAction } from "@/actions/doctors/assignDoctorAction";
 import { APP_URLS } from "@/shared/config/constants/urls";
 import { useThemeStore } from "@/shared/stores/theme-store";
 import FullScreenLoader from "@/components/ui/Loader";
+import { DoctorLookupResult } from "@/shared/types";
 
 // ===== ISOLATED CARD COMPONENT =====
 function DoctorLookupCard({

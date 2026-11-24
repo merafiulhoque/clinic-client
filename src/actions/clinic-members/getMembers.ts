@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { api } from "@/shared/api";
 import { API_ENDPOINTS } from "@/shared/config/constants/api_endpoints";
-import { Role } from "@/shared/types/schemas";
+import { Role } from "@/shared/types";
 
 export type ClinicMemberSummary = {
   id: number;

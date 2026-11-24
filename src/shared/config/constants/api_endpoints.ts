@@ -4,6 +4,8 @@ export const API_ENDPOINTS = {
         SIGN_IN: "/api/v1/auth/signin",
         SIGN_OUT: "/api/v1/auth/signout",
         ME: "/api/v1/auth/me",
+        GET_PASSWORD_LINK: "/api/v1/auth/password-reset-link",
+        PASSWORD_RESET: "/api/v1/auth/password-reset"
     },
     CLINIC: {
         CREATE: "/api/v1/clinic/create",

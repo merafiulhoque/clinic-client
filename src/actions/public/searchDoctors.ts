@@ -1,7 +1,8 @@
 "use server";
 
 import { api } from "@/shared/api";
-import { PublicDoctor, PublicDoctorSearchData, publicDoctorSearchSchema } from "@/shared/types/schemas";
+import { PublicDoctor } from "@/shared/types";
+import {  PublicDoctorSearchData, publicDoctorSearchSchema } from "@/shared/types/schemas";
 
 
 export async function searchDoctorsAction(params: PublicDoctorSearchData): Promise<PublicDoctor[]> {

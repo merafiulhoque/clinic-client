@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Role } from "../types/schemas";
+import { Role } from "../types";
 
 
 export type UserClinicInfo = {

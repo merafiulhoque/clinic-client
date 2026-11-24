@@ -8,8 +8,12 @@ import { Toaster } from "@/components/ui/Toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Clinic Management System",
-  description: "Manage your clinic and patient appointments",
+  title: {
+    default: "Clinic Management System",
+    template: "%s | Clinic Management System",
+  },
+  description:
+    "Find doctors, book appointments, and manage clinic operations efficiently.",
 };
 
 export default function RootLayout({

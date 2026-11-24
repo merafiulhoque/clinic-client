@@ -171,6 +171,20 @@ export default function SigningPage() {
                         </p>
                     )}
 
+                    {/* Forgot Password link — above password input, right-aligned */}
+                    <div className="flex justify-end -mb-1">
+                        <Link
+                            href={APP_URLS.PASSWORD_RESET_LINK}
+                            className={`text-xs font-medium transition-colors underline-offset-4 hover:underline ${
+                                isDark
+                                    ? "text-zinc-400 hover:text-emerald-300"
+                                    : "text-zinc-600 hover:text-indigo-600"
+                            }`}
+                        >
+                            Forgot password?
+                        </Link>
+                    </div>
+
                     {/* Password */}
                     <div className="relative">
                         <input

@@ -1,7 +1,7 @@
 "use server";
 
 import { api } from "@/shared/api";
-import { createScheduleData, createScheduleSchema } from "@/shared/types/schemas";
+import { CreateScheduleData, createScheduleSchema } from "@/shared/types/schemas";
 import { cookies } from "next/headers";
 
 export type DoctorOfClinic = {
@@ -27,7 +27,7 @@ export async function getAllAssignedDoctorsAction(): Promise<ClinicWithDoctors[]
   });
 }
 
-export async function createScheduleAction(data: createScheduleData) {
+export async function createScheduleAction(data: CreateScheduleData) {
   const parsed = createScheduleSchema.safeParse(data);
   if (!parsed.success) return { success: false, message: "Invalid schedule data" };
 

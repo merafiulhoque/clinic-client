@@ -20,13 +20,14 @@ import {
     DoctorOfClinic,
     getAllAssignedDoctorsAction,
 } from "@/actions/doctor-clinic/getAll";
-import { createScheduleData, createScheduleSchema, Weekday } from "@/shared/types/schemas";
+import { CreateScheduleData, createScheduleSchema } from "@/shared/types/schemas";
 import { createNewScheduleAction } from "@/actions/schedules/createNew";
 import { timeToMinutes } from "@/shared/utils/formatTime";
 import { showToast } from "@/shared/stores/toast-store";
 import { APP_URLS } from "@/shared/config/constants/urls";
 import { useThemeStore } from "@/shared/stores/theme-store";
 import FullScreenLoader from "@/components/ui/Loader";
+import { Weekday } from "@/shared/constants";
 
 export default function CreateSchedulePage() {
     const { activeClinic, availableClinics } = useClinicStore();
@@ -52,7 +53,7 @@ export default function CreateSchedulePage() {
     });
 
     const scheduleMutation = useMutation({
-        mutationFn: async (payload: createScheduleData) => {
+        mutationFn: async (payload: CreateScheduleData) => {
             const result = await createNewScheduleAction(payload);
             if (!result.success) throw new Error(result.message);
             return result;

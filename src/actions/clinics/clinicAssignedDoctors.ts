@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { api } from "@/shared/api";
-import { createScheduleSchema, createScheduleData } from "@/shared/types/schemas";
+import { CreateScheduleData, createScheduleSchema } from "@/shared/types/schemas";
 
 export type ClinicAssignedDoctor = {
   doctorClinicId: number;
@@ -21,7 +21,7 @@ export async function getAssignedDoctorsByClinicAction(clinicId: number): Promis
   });
 }
 
-export async function createScheduleAction(data: createScheduleData) {
+export async function createScheduleAction(data: CreateScheduleData) {
   const parsed = createScheduleSchema.safeParse(data);
   if (!parsed.success) return { success: false, message: "Invalid schedule data" };
 
