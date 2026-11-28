@@ -43,7 +43,7 @@ export const SIDEBAR_CONFIG: Record<"OWNER" | "STAFF", SidebarItem[]> = {
         },
         {
             title: "Patient Module",
-            href: `${APP_URLS.OWNER_DASHBOARD}/patients`, // Will render cards for patient records/analytics
+            href: `${APP_URLS.OWNER_DASHBOARD}/patient-module`, // Will render cards for patient records/analytics
             icon: Users,
         },
     ],
